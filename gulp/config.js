@@ -14,12 +14,12 @@ export default {
 
     scssMain: 'app/scss/main.scss',
     scssFiles: 'app/scss/**/*.scss',
-    cssDist: 'dist/css/',
+    cssDist: 'dist/css',
 
     fontsDist: 'dist/fonts',
 
     jsMain: 'app/app.js',
-    jsDist: 'dist/js/',
+    jsDist: 'dist/js',
 
     index: 'app/index.html'
   }]

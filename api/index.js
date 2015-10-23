@@ -1,7 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
+
+app.use(cors());
 
 let lists = [{
   name: 'TODO',
@@ -35,7 +38,7 @@ app.put('/lists', bodyParser.json(), function (req, res) {
   res.send(lists);
 });
 
-const server = app.listen(3000, function () {
+const server = app.listen(8080, function () {
   const host = server.address().address;
   const port = server.address().port;
 
