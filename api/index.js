@@ -30,7 +30,7 @@ app.get('/lists', function (req, res) {
   res.send(lists);
 });
 
-app.put('/lists', bodyParser.json(), function(req, res) {
+app.put('/lists', bodyParser.json(), function (req, res) {
   lists = req.body;
   res.send(lists);
 });

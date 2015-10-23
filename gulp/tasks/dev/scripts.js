@@ -2,7 +2,6 @@ export default function () {
   const gulp = require('gulp');
   const browserify = require('browserify');
   const babelify = require('babelify');
-  const reactify = require('reactify');
   const watchify = require('watchify');
   const source = require('vinyl-source-stream');
   const buffer = require('vinyl-buffer');
@@ -22,7 +21,6 @@ export default function () {
 
     return browserify(options)
       .transform(babelify)
-      .transform(reactify)
       .external(gulpConfig.vendors);
   }
 
