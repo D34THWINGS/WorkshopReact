@@ -1,6 +1,6 @@
 import browserSync from 'browser-sync';
 
-import gulpConfig from './../../config';
+import gulpConfig from './../config';
 
 export function bsCreate () {
   gulpConfig.apps.forEach(app => browserSync.create(app.name));

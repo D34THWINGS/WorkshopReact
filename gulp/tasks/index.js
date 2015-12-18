@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import inject from 'gulp-inject';
 import series from 'stream-series';
 
-import gulpConfig from './../../config';
+import gulpConfig from './../config';
 
 export default function () {
   gulpConfig.apps.forEach((app) => {

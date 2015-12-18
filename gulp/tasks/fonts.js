@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import merge2 from 'merge2';
 
-import gulpConfig from './../../config';
+import gulpConfig from './../config';
 
 export default function () {
   return merge2(gulpConfig.apps.map((app) => {

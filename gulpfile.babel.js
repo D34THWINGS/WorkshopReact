@@ -1,25 +1,27 @@
 import gulp from 'gulp';
 
-import clean from './gulp/tasks/shared/clean';
-import {bsCreate, bsInit} from './gulp/tasks/dev/browser-sync';
-import serve from './gulp/tasks/dev/serve';
-import build from './gulp/tasks/dev/build';
-import index from './gulp/tasks/dev/index';
-import styles from './gulp/tasks/dev/styles';
-import fonts from './gulp/tasks/dev/fonts';
-import {appScripts, vendorsScripts} from './gulp/tasks/dev/scripts';
-import watch from './gulp/tasks/dev/watch';
+import clean from './gulp/tasks/clean';
+import {bsCreate, bsInit} from './gulp/tasks/browser-sync';
+import serve from './gulp/tasks/serve';
+import build from './gulp/tasks/build';
+import index from './gulp/tasks/index';
+import {appStyles, servedAppStyles} from './gulp/tasks/styles';
+import fonts from './gulp/tasks/fonts';
+import {servedAppScripts, appScripts, vendorsScripts} from './gulp/tasks/scripts';
+import watch from './gulp/tasks/watch';
 
 gulp
-  .task('shared:clean', clean)
+  .task('clean', clean)
 
-  .task('dev:browser-sync-create', bsCreate)
-  .task('dev:browser-sync-init', bsInit)
-  .task('dev:serve', serve)
-  .task('dev:build', build)
-  .task('dev:index', index)
-  .task('dev:styles', styles)
-  .task('dev:fonts', fonts)
-  .task('dev:scripts', appScripts)
-  .task('dev:vendors', vendorsScripts)
-  .task('dev:watch', watch);
+  .task('browser-sync-create', bsCreate)
+  .task('browser-sync-init', bsInit)
+  .task('serve', serve)
+  .task('build', build)
+  .task('index', index)
+  .task('styles', appStyles)
+  .task('styles:served', servedAppStyles)
+  .task('fonts', fonts)
+  .task('scripts', appScripts)
+  .task('scripts:served', servedAppScripts)
+  .task('vendors', vendorsScripts)
+  .task('watch', watch);
