@@ -1,7 +1,6 @@
+import sequence from 'run-sequence';
+
 export default function (done) {
-
-  const sequence = require('run-sequence');
-
   sequence(
     'dev:browser-sync-create',
     'dev:build',
@@ -9,5 +8,4 @@ export default function (done) {
     'dev:watch',
     done
   );
-
 }

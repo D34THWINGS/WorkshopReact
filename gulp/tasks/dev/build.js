@@ -1,6 +1,6 @@
-export default function (done) {
-  const sequence = require('run-sequence');
+import sequence from 'run-sequence';
 
+export default function (done) {
   sequence(
     'shared:clean',
     [

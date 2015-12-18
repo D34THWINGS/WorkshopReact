@@ -1,17 +1,25 @@
 import gulp from 'gulp';
 
+import clean from './gulp/tasks/shared/clean';
+import {bsCreate, bsInit} from './gulp/tasks/dev/browser-sync';
+import serve from './gulp/tasks/dev/serve';
+import build from './gulp/tasks/dev/build';
+import index from './gulp/tasks/dev/index';
+import styles from './gulp/tasks/dev/styles';
+import fonts from './gulp/tasks/dev/fonts';
+import {appScripts, vendorsScripts} from './gulp/tasks/dev/scripts';
+import watch from './gulp/tasks/dev/watch';
+
 gulp
-  .task('shared:clean', require('./gulp/tasks/shared/clean'))
+  .task('shared:clean', clean)
 
-  .task('dev:browser-sync-create', require('./gulp/tasks/dev/browser-sync-create'))
-  .task('dev:browser-sync-init', require('./gulp/tasks/dev/browser-sync-init'))
-  .task('dev:serve', require('./gulp/tasks/dev/serve'))
-  .task('dev:build', require('./gulp/tasks/dev/build'))
-  .task('dev:index', require('./gulp/tasks/dev/index'))
-  .task('dev:styles', require('./gulp/tasks/dev/styles'))
-  .task('dev:fonts', require('./gulp/tasks/dev/fonts'))
-  .task('dev:scripts', require('./gulp/tasks/dev/scripts'))
-  .task('dev:vendors', require('./gulp/tasks/dev/vendors'))
-  .task('dev:watch', require('./gulp/tasks/dev/watch'))
-
-  .task('test:back', require('./gulp/tasks/test/back'));
+  .task('dev:browser-sync-create', bsCreate)
+  .task('dev:browser-sync-init', bsInit)
+  .task('dev:serve', serve)
+  .task('dev:build', build)
+  .task('dev:index', index)
+  .task('dev:styles', styles)
+  .task('dev:fonts', fonts)
+  .task('dev:scripts', appScripts)
+  .task('dev:vendors', vendorsScripts)
+  .task('dev:watch', watch);

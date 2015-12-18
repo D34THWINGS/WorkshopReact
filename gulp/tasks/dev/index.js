@@ -1,10 +1,10 @@
+import gulp from 'gulp';
+import inject from 'gulp-inject';
+import series from 'stream-series';
+
+import gulpConfig from './../../config';
+
 export default function () {
-  const gulp = require('gulp');
-  const inject = require('gulp-inject');
-  const series = require('stream-series');
-
-  const gulpConfig = require('./../../config');
-
   gulpConfig.apps.forEach((app) => {
     const injectSources = series(
       gulp.src([app.jsDist + '/vendors.js'], {read: false}),

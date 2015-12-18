@@ -1,7 +1,10 @@
 export default {
   vendors: [
     'react',
-    'react-dom'
+    'react-dom',
+    'react-router',
+    'history',
+    'babel-polyfill'
   ],
 
   vendorsDist: 'dist/js',
@@ -18,7 +21,7 @@ export default {
 
     fontsDist: 'dist/fonts',
 
-    jsMain: 'app/app.js',
+    jsMain: 'app/index.js',
     jsDist: 'dist/js',
 
     index: 'app/index.html'

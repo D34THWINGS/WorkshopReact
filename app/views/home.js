@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-import {List} from './components/list';
+import {List} from '../components/list';
 
-class App extends React.Component {
+export class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {lists: []};
@@ -21,13 +20,8 @@ class App extends React.Component {
 
   render() {
     const listNodes = this.state.lists.map(list => {
-      return <List name={list.name} cards={list.tasks}/>;
+      return <List key={list.name} name={list.name} cards={list.tasks}/>;
     });
     return <div className="app">{listNodes}</div>;
   }
 }
-
-ReactDOM.render(
-  <App/>,
-  document.getElementById('example')
-);

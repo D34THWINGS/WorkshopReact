@@ -1,18 +1,19 @@
-export default function () {
-  const gulp = require('gulp');
-  const browserify = require('browserify');
-  const babelify = require('babelify');
-  const watchify = require('watchify');
-  const source = require('vinyl-source-stream');
-  const buffer = require('vinyl-buffer');
-  const sourcemaps = require('gulp-sourcemaps');
-  const _ = require('lodash');
-  const merge2 = require('merge2');
+import gulp from 'gulp';
+import browserify from 'browserify';
+import babelify from 'babelify';
+import watchify from 'watchify';
+import source from 'vinyl-source-stream';
+import buffer from 'vinyl-buffer';
+import sourcemaps from 'gulp-sourcemaps';
+import _ from 'lodash';
+import merge2 from 'merge2';
+import browserSync from 'browser-sync';
 
-  const gulpConfig = require('./../../config');
+import gulpConfig from './../../config';
 
-  const notify = require('./../../helpers/notify');
+import notify from './../../helpers/notify';
 
+export function appScripts() {
   function browserifyInit(entries) {
     const options = _.defaults({
       entries,
@@ -43,9 +44,9 @@ export default function () {
       verbose: true
     });
     watcher.on('update', () => {
-      const browserSync = require('browser-sync').get(app.name);
+      const bs = browserSync.get(app.name);
       return bundleUp(bundler, app.jsDist)
-        .pipe(browserSync.reload({
+        .pipe(bs.reload({
           stream: true
         }));
     });
@@ -54,3 +55,12 @@ export default function () {
 
   return merge2(gulpConfig.apps.map(createWatcher));
 }
+
+export function vendorsScripts() {
+  return browserify()
+    .require(gulpConfig.vendors)
+    .bundle()
+    .pipe(source('vendors.js'))
+    .pipe(gulp.dest(gulpConfig.vendorsDist));
+}
+

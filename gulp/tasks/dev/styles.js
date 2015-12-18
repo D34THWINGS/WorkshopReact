@@ -1,12 +1,12 @@
+import gulp from 'gulp';
+import merge2 from 'merge2';
+import sass from 'gulp-sass';
+import autoprefixer from 'gulp-autoprefixer';
+import browserSync from 'browser-sync';
+
+import gulpConfig from './../../config';
+
 export default function () {
-  const gulp = require('gulp');
-  const merge2 = require('merge2');
-  const sass = require('gulp-sass');
-  const autoprefixer = require('gulp-autoprefixer');
-  const browserSync = require('browser-sync');
-
-  const gulpConfig = require('./../../config');
-
   const sassOptions = {
     includePaths: [
       'node_modules/font-awesome/scss',
@@ -29,5 +29,5 @@ export default function () {
       }));
   }
 
-  return merge2(gulpConfig.apps.map((app) => buildStyles(app.scssMain, app.cssDist, browserSync.get(app.name))));
+  return merge2(gulpConfig.apps.map(app => buildStyles(app.scssMain, app.cssDist, browserSync.get(app.name))));
 }
