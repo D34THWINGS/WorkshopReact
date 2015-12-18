@@ -10,6 +10,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import _ from 'lodash';
 import merge2 from 'merge2';
 import browserSync from 'browser-sync';
+import lrload from 'livereactload';
 
 import gulpConfig from './../config';
 
@@ -18,7 +19,8 @@ import notify from './../helpers/notify';
 function browserifyInit(entries) {
   const options = _.defaults({
     entries,
-    debug: true
+    debug: true,
+    plugin: process.env.NODE_ENV !== 'dev' ? [] : [lrload]
   }, watchify.args);
 
   return browserify(options)
@@ -48,9 +50,9 @@ function createWatcher(app) {
   watcher.on('update', () => {
     const bs = browserSync.get(app.name);
     return bundleUp(bundler, app.jsDist)
-      .pipe(bs.reload({
+      /*.pipe(bs.reload({
         stream: true
-      }));
+      }))*/;
   });
   return bundleUp(watcher, app.jsDist);
 }

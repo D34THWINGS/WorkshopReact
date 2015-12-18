@@ -10,7 +10,7 @@ export default function () {
   // Watch scss files
   const scssWatchers = [
     watch(gulpConfig.apps.map(app => app.scssFiles), () => {
-      gulp.start('styles');
+      gulp.start('styles:served');
     })
   ];
 
