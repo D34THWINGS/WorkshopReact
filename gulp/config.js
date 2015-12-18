@@ -4,7 +4,12 @@ export default {
     'react-dom',
     'react-router',
     'history',
-    'babel-polyfill'
+    'babel-polyfill',
+    'immutable',
+    'react-redux',
+    'redux',
+    'redux-thunk',
+    'redux-api-middleware'
   ],
 
   vendorsDist: 'dist/js',
